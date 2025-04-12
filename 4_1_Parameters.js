@@ -70,3 +70,54 @@ matchParameterWithUseStrict("user");
 
 
 // ============== END: Overriding Parameters 
+
+
+// ============== START: Arguments in Arrow functions
+
+function normal(name) {
+    console.log({ name, argumentName: arguments[0] },);
+}
+
+const arrow = (name) => {
+    console.log({ name, argumentName: arguments[0] },);
+}
+
+normal("Ninja");  // { name: 'Ninja', argumentName: 'Ninja' }
+arrow("Ninja");  // { name: 'Ninja', argumentName: {} }
+
+// Summary: In arrow function the arguments belongs to parents (function invoke point) arguments
+
+(function () {
+    function normal(name) {
+        console.log({ name, argumentName: arguments[0] },);
+    }
+
+    const arrow = (name) => {
+        console.log({ name, argumentName: arguments[0] },);
+    }
+
+    normal("Ninja");  // { name: 'Ninja', argumentName: 'Ninja' }
+    arrow("Ninja");  // { name: 'Ninja', argumentName: 'Hattori' }
+})("Hattori");
+
+// Then what if the parent is also a arrow function 🤔
+// The answer is same 😅😅😅 
+
+(function () {
+    const test = () => {
+        function normal(name) {
+            console.log({ name, argumentName: arguments[0] },);
+        }
+
+        const arrow = (name) => {
+            console.log({ name, argumentName: arguments[0] },);
+        }
+
+        normal("Ninja");  // { name: 'Ninja', argumentName: 'Ninja' }
+        arrow("Ninja");  // { name: 'Ninja', argumentName: 'Hattori' }
+    }
+    test("weapon");
+})("Hattori");
+
+
+// ============== END:  Arguments in Arrow functions
