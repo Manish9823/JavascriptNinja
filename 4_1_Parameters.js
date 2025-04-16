@@ -68,8 +68,8 @@ function matchParameterWithUseStrict(person) {
 }
 matchParameterWithUseStrict("user");
 
-
 // ============== END: Overriding Parameters 
+
 
 
 // ============== START: Arguments in Arrow functions
@@ -118,6 +118,5 @@ arrow("Ninja");  // { name: 'Ninja', argumentName: {} }
     }
     test("weapon");
 })("Hattori");
-
 
 // ============== END:  Arguments in Arrow functions
