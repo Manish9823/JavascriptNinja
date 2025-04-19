@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="test">Button With Normal Function: Click Me!</button>
+    <button id="test1">Button With Arrow Function: Click Me!</button>
+    <button id="test2">Button With Object Literal: Click Me!</button>
+    <button id="test3">Button With Object Literal and Bind method: Click Me!</button>
+</body>
+<script>
+    function Button() {
+        this.clicked = false;
+        this.click = function () {
+            this.clicked = true;
+            console.log(button.clicked, " The button has been clicked", this, button);
+        };
+        this.skulk = function () {
+            console.log(this)
+            return this;
+        }
+    }
+    const button = new Button();
+    console.log(button.skulk());   // Here the context will be the button object
+    const element = document.getElementById('test');
+    element.addEventListener('click', button.click); // and here the context will be the DOM object
+    element.addEventListener('click', button.skulk); // and here the context will be the DOM object
+
+    // -----------------------------------------------------------------
+
+    function ButtonArrow() {
+        this.clicked = false;
+        this.click = () => {
+            this.clicked = true;
+            console.log(button1.clicked, " The button has been clicked", this, button1);
+        };
+    }
+    const button1 = new ButtonArrow();
+    const element1 = document.getElementById('test1');
+    element1.addEventListener('click', button1.click);
+
+    // -----------------------------------------------------------------
+
+    const button2 = {
+        clicked: false,
+        click: () => {
+            this.clicked = true;
+            console.log(button2.clicked, " The button has been clicked", this, button2);
+            console.log(window.clicked, " windows clicked is called")
+        }
+    }
+
+    const element2 = document.getElementById('test2');
+    element2.addEventListener('click', button2.click);
+
+    // -----------------------------------------------------------------
+
+    const button3 = {
+        clicked: false,
+        click: function () {
+            this.clicked = true;
+            console.log(button3.clicked, " The button has been clicked", this, button3);
+            console.log(window.clicked, " windows clicked is called")
+        }
+    }
+
+    const element3 = document.getElementById('test3');
+    element3.addEventListener('click', button3.click.bind(button3));
+
+    const boundFunction = button3.click.bind(button3);
+    console.log(boundFunction === button3.click, " both functions are same")
+</script>
+
+</html>
