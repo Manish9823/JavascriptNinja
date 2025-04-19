@@ -102,3 +102,9 @@ forEach(weapons, function (index) {
 // context matched => Got the expected value nunchucks
 
 // ------------- END: Building 'forEach' method to demonstrate setting a function context
+
+
+// NOTE: apply and call method change the function context (this) and arguments list only for normal function
+// They cannot change the this context of an arrow function.
+// The arrow function will ignore the thisArg parameter (the first parameter you pass to apply or call) and continue using whatever this value was in the scope where the arrow function was defined.
+// The same principle applies to bind - it returns a new function, but the this value inside the arrow function remains unchanged.
