@@ -16,3 +16,6 @@ ninja1.feints();
 console.log(ninja1.feints === undefined, " And the private data is inaccessible to us.");
 
 console.log(ninja1.getFeints() === 1, " We're able to access the internal feint count.");
+
+var ninja2 = new Ninja();
+console.log(ninja2.getFeints() === 0, " The second ninja object gets its own feints variable.");
