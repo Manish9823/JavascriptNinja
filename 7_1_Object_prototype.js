@@ -31,3 +31,20 @@ console.log('Inheritance rules ----------------------')
 console.log("skulk" in hattori, " Hattori can skulk"); // false
 console.log("sneak" in kuma, " Kuma can sneak"); // false
 console.log("skulk" in kuma, " Kuma can skulk"); // false
+
+
+
+// ======================================================================
+
+// Creating a new instance with a prototype method
+
+function Ninja() { }
+Ninja.prototype.swingSword = function () {
+    return true;
+}
+
+const ninja1 = Ninja();
+console.log(ninja1, " No instance of Ninja Created.");
+
+const ninja2 = new Ninja();
+console.log({ ninja2 }, { swingSword: ninja2.swingSword }, " instance of Ninja exists and method is callable.");
