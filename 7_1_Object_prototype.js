@@ -48,3 +48,46 @@ console.log(ninja1, " No instance of Ninja Created.");
 
 const ninja2 = new Ninja();
 console.log({ ninja2 }, { swingSword: ninja2.swingSword }, " instance of Ninja exists and method is callable.");
+
+
+// ===============================================
+
+// Here we can see that the getSwordOwner method is the object method  { swordOwner: "Yoshi", getSwordOwner: Function}
+// when we create a object "ninja3" with new keyword the new object get created for this the above one object is created
+// and we create a prototype method of a function with same name as the object method so the first preference goes to the object property
+// when we call the prototype method with object "ninaj3" it first find it in the object and then after in prototype method.
+
+function Ninja1() {
+    this.swordOwner = "Yoshi";
+    this.getSwordOwner = () => {
+        return this.swordOwner;
+    }
+}
+
+Ninja1.prototype.getSwordOwner = function () {
+    return "Hattori ";
+}
+
+
+Ninja1.prototype.getSwordOwner1 = function () {
+    return "Hattori ";
+}
+
+const ninja3 = new Ninja1();
+
+
+console.log(ninja3.getSwordOwner()); // Yoshi
+console.log(ninja3.getSwordOwner1()); // Hattori 
+
+// =======================================================
+
+// Playing with number prototype
+
+const num = new Number(Math.floor(Math.random() * 10));
+Number.prototype.square = function () {
+    const number = this.valueOf();
+    return number * number;
+}
+console.log({ number: num.valueOf(), square: num.square() });
+
+// ==================================================
