@@ -91,3 +91,7 @@ Number.prototype.square = function () {
 console.log({ number: num.valueOf(), square: num.square() });
 
 // ==================================================
+
+const number=2;
+console.log(number, number.__proto__," number.__proto__");
+
