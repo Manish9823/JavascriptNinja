@@ -70,3 +70,8 @@ function fun() { this.greet = "hello"; return this.greet; }
 console.log("Boolean toggle using custom prototype method: ", fun.changeContext());
 console.log(fun());  // hello
 
+
+// ============= Prototype vs __proto__
+// Here the __proto__ refer to the Class prototype
+const val = 5;
+console.log(val.__proto__ === Number.prototype, " Both are same");
