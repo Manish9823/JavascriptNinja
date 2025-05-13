@@ -74,4 +74,41 @@ console.log(fun());  // hello
 // ============= Prototype vs __proto__
 // Here the __proto__ refer to the Class prototype
 const val = 5;
-console.log(val.__proto__ === Number.prototype, " Both are same");
+console.log(val.__proto__ === Number.prototype, " For Number Case Both are same");  // true
+
+function Test() { }
+const test = new Test();
+console.log(test.__proto__ === Test.prototype, " For Function Case Both are same"); // true
+
+
+
+// ===================  Object Constructor =========================
+
+function Ninja() { }
+
+// here ninja is a newly created object 
+const ninja = new Ninja();
+
+console.log({ object: ninja, ninjaConstructor: ninja.constructor, ninjaPrototype: ninja.prototype, ninja__prot__: ninja.__proto__ });
+
+// output
+// {
+//   object: Ninja {},
+//   ninjaConstructor: [Function: Ninja],
+//   ninjaPrototype: undefined,
+//   ninja__prot__: {}
+// }
+
+console.log(typeof ninja === 'object', " Tye typeof the instance is object."); // true
+console.log(ninja instanceof Ninja, " instance of identifies the constructor."); // true
+// By using the .constructor property we can get the function reference where it was created from. [verify the origin]
+console.log(ninja.constructor === Ninja, " The ninja object was created by the Ninja Function."); // true
+
+
+
+
+// Creating new object using existing object constructor property
+
+const ninja2 = new ninja.constructor();  // this is same as "const ninja2= new Ninja()"
+console.log(ninja2 instanceof Ninja, " It's a instance of Ninja.");
+console.log(ninja === ninja2, " But not the same Ninja"); // since the ninja and ninja2 both are different objects
