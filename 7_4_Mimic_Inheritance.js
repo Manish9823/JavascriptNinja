@@ -53,3 +53,34 @@ console.log({ ninja2 }); // ninja2 belongs to Person, not to Ninja
 
 console.log({ ninja3 }); // ninja3 belongs to Person, not to Ninja
 // { ninja3: Person { dance: true, run: true } }
+
+
+
+// ===================  Protecting the property ===========
+
+const test = { name: 'abc' };
+Object.defineProperty(test, "name", {
+    configurable: false,
+    value: "User",
+    writable: false,
+});
+
+test.name = "User2";  // trying to override the name property
+
+console.log({ test }) // { test: { name: 'User' } }  // Here the property doesn't changed.
+
+
+// ========== Let's implement it our Ninja class
+function Ninja2() { }
+
+Object.defineProperty(Ninja2, "prototype", {
+    configurable: false,
+    enumerable: false,
+    value: new Ninja2(),
+    writable: false
+});
+
+Ninja2.prototype = new Person();
+
+const ninja6 = new Ninja2();
+console.log(ninja6.constructor === Ninja2, " Here the ninja6 constructor belongs to Ninja2"); // true
