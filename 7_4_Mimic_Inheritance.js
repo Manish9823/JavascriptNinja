@@ -84,3 +84,17 @@ Ninja2.prototype = new Person();
 
 const ninja6 = new Ninja2();
 console.log(ninja6.constructor === Ninja2, " Here the ninja6 constructor belongs to Ninja2"); // true
+
+
+// ============== instanceof operator ============
+// the straightforward approach for checking whether an object is a part of a class hierarchy is to use the instanceof operator.
+// as classic 
+function Person1() { }
+function Ninja8() { }
+
+Ninja8.prototype = new Person1();
+
+const ninja8 = new Ninja8()
+
+console.log(ninja8 instanceof Ninja8, " ninja8 is instance of Ninja8"); // true
+console.log(ninja8 instanceof Person1, " ninja8 is instance of Person"); // true
