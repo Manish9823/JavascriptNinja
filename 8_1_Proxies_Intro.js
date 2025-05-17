@@ -2,7 +2,7 @@
 // Proxies is new type of object
 // Through the Proxy constructor, we create a proxy object that controls access to the target object by 
 // activating certain traps, whenever an operation is performed directly on a proxy
-// Traps=> apply, get, set, enumerate, getPrototypeOf and setPrototypeOf
+// Traps=> apply, get, set, enumerate, getPrototypeOf and setPrototypeOf, deleteProperty
 // 1. apply : trap will be activated when calling a function, and the construct trap when using the new operator.
 // 2. get and set: trap will be activated when reading/writing to a property
 // 3. enumerate: trap will be activated for for-in statements
