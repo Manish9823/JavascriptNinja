@@ -2317,15 +2317,3 @@
 
 // Use lookaheads for rule enforcement without consuming characters.
 
-// Let me know if you want this exported as a file (e.g., PDF/Markdown/HTML), or ready to jump into Challenge 5 with negative lookaheads? 😈
-
-// Get smarter responses, upload files and images, and more.
-
-// Log in
-
-// Sign up for free
-
-
-// No file chosenNo file chosen
-// ChatGPT can make mistakes. Check important info. See Cookie Preferences.
-
