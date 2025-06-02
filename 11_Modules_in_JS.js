@@ -8,6 +8,7 @@
 //  Mostly for browser
 // 2. CommonJS => Synchronous, Single file implementation, export using the module.export = {test}; and import using require keyword.
 // This is mostly used in server side scripts like nodejs
+// Doesn't support top-level-await
 
 // In ES6 Module
 // Brought asynchronous from AMD, and all others from CommonJS (Single file and export)
@@ -15,7 +16,7 @@
 // export const test =()=>{};  // test.js
 // import test from "test";
 // More things like "* as test" (import all in one object), import default, etc.
-
+// Support top-level-await
 
 // E.g
 
@@ -53,3 +54,8 @@ console.log({ MagicNumber }); // Print randomNumber aliases (import aliases)
 try { console.log({ randomNumber }) } catch (error) { console.log(error.message); } // "randomNumber is not defined"
 printFunction('This is export at once example');
 new PrintRandomNumberClass(); // this is aliases example (export aliases)
+
+// 4. Import asynchronous module
+console.log("Before Async feature of module: ", Date.now())
+const test = await import("./11_test_module.js");
+console.log("After Async feature of module: ", Date.now())

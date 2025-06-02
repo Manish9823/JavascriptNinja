@@ -1,9 +1,26 @@
+
+const normal = async () => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log("This is after 5Sec");
+            resolve();
+        }, 5000);
+    });
+}
+
+console.log("before normal")
+await  normal();
+console.log("after normal")
+
 // 1. CommonJS
 // let counter = 0;
+
 // const printParameter = (parameter) => {
 //     console.log({ parameter, counter });
 //     counter++;
 // }
+
+
 // module.exports = { printParameter };
 
 
