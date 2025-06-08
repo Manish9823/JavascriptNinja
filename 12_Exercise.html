@@ -1,0 +1,10 @@
+<div id="samurai"></div>
+<script>
+    const element = document.querySelector('#samurai');
+    console.log(element.id === 'samurai', " Property id is samurai.");
+    console.log(element.getAttribute('id') === 'samurai', " attribute id is samurai.");
+
+    element.id = "newSamurai";
+    console.log(element.id === 'newSamurai', " Property id is newSamurai.");
+    console.log(element.getAttribute('id') === 'newSamurai', " attribute id is newSamurai.");
+</script>
