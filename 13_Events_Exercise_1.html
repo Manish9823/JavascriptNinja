@@ -1,0 +1,30 @@
+<!-- Book Exercise: 3 -->
+
+<!-- What the output from running the following code for 2 seconds -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    setTimeout(() => {
+        console.log('Timeout');
+    }, 1000);
+
+    setInterval(() => {
+        console.log("Interval")
+    }, 500);
+</script>
+
+</html>
+
+
+<!-- Output: b. Interval Timeout Interval Interval Interval -->
