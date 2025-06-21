@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="onClick()">click me</button>
+</body>
+<script>
+    console.time('timerId');
+    function onClick(event) {
+        console.timeLog('timerId', `OnClick on Clicked at ${Date.now()}`);
+        simulatedSyncTask(5);
+    }
+
+    function simulatedSyncTask(timeInSeconds) {
+        for (let seconds = 0; seconds < timeInSeconds; seconds++) {
+            let a = 0;
+            for (let index = 0; index < 600000000; index++) {
+                a = a === 1 ? 0 : 1;
+            }
+            console.timeLog('timerId', `Completed seconds ${seconds}`)
+        }
+    }
+
+    function simulateAsyncTask(timeInSeconds, callback) {
+        console.timeLog('timerId', `simulating async started for ${timeInSeconds}`);
+        // return new Promise((resolve) => {
+        const xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState === 4) {
+                console.timeLog('timerId', `simulating async resolved`);
+                callback();
+            }
+        };
+        xhr.open('GET', `http://localhost:3001/responseDelay/${timeInSeconds}`);
+        xhr.send();
+    }
+
+    window.onload = () => {
+        simulateAsyncTask(6, () => {
+            simulatedSyncTask(5);
+            console.timeLog('timerId', `completed promise with 5sec processed`)
+        });
+        simulateAsyncTask(10, () => {
+            simulatedSyncTask(5);
+            console.timeLog('timerId', `completed promise with 5sec processed`)
+        });
+    }
+</script>
+
+</html>
